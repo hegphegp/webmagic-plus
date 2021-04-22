@@ -1,7 +1,10 @@
 package us.codecraft.webmagic.util;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.LoggerContext;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 
@@ -52,4 +55,13 @@ public class WebmagicUtils {
         return patterns;
     }
 
+    public static void setLoggerLevel() {
+        LoggerContext logContext = (LoggerContext) LoggerFactory.getILoggerFactory();
+        logContext.getLogger("org.apache.http").setLevel(Level.INFO);
+        logContext.getLogger("us.codecraft.webmagic.scheduler.RedisScheduler").setLevel(Level.INFO);
+        logContext.getLogger("com.zaxxer.hikari").setLevel(Level.INFO);
+        logContext.getLogger("us.codecraft.webmagic.utils.CharsetUtils").setLevel(Level.INFO);
+//        logContext.getLogger("org.springframework.jdbc").setLevel(Level.INFO);
+//        logContext.getLogger("us.codecraft.webmagic.downloader.HttpClientDownloader").setLevel(Level.WARN);
+    }
 }

@@ -55,7 +55,7 @@ public class WebmagicUtils {
         return patterns;
     }
 
-    public static void setLoggerLevel() {
+    public static LoggerContext setLoggerLevel() {
         LoggerContext logContext = (LoggerContext) LoggerFactory.getILoggerFactory();
         logContext.getLogger("org.apache.http").setLevel(Level.INFO);
         logContext.getLogger("us.codecraft.webmagic.scheduler.RedisScheduler").setLevel(Level.INFO);
@@ -63,5 +63,6 @@ public class WebmagicUtils {
         logContext.getLogger("us.codecraft.webmagic.utils.CharsetUtils").setLevel(Level.INFO);
 //        logContext.getLogger("org.springframework.jdbc").setLevel(Level.INFO);
 //        logContext.getLogger("us.codecraft.webmagic.downloader.HttpClientDownloader").setLevel(Level.WARN);
+        return logContext;
     }
 }
